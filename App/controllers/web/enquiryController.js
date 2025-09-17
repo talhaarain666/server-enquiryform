@@ -1,12 +1,12 @@
 const enquiryModel = require("../../models/enquiry.model");
 
 let enquiryInsert = (req, res) => {
-    let { sName, sEmail, sPhone, sMessage } = req.body;
+    let { name, email, phone, message } = req.body;
     let enquiry = new enquiryModel({
-        name: sName,
-        email: sEmail,
-        phone: sPhone,
-        message: sMessage
+        name,
+        email,
+        phone,
+        message
     })
     enquiry.save().then(() => {
         res.send({ status: 1, msg: "Enquiry Saved Successfully" })
