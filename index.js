@@ -1,8 +1,12 @@
 let express = require("express");
 let mongoose = require("mongoose");
 const enquiryRouter = require("./App/routes/web/enquiryRoutes");
+let cors = require("cors");
 require("dotenv").config();
 let app = express();
+
+// to allow cross origin requests
+app.use(cors())
 
 app.use(express.json());
 
