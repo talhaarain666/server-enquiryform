@@ -5,6 +5,6 @@ let enquiryRouter = express.Router();
 // Calling Controller Function
 enquiryRouter.post("/insert",enquiryInsert);
 enquiryRouter.get("/view",enquiryList);
-enquiryRouter.get("/delete/:id",enquiryDelete);
+enquiryRouter.delete("/delete/:id",enquiryDelete);
 
 module.exports=enquiryRouter;
