@@ -16,4 +16,15 @@ let enquiryInsert = (req, res) => {
     })
 }
 
-module.exports = { enquiryInsert };
+let enquiryList = async (req, res) => {
+    let enquiries = await enquiryModel.find();
+    res.send({ status: 1, enquiryList: enquiries })
+}
+
+let enquiryDelete = async (req, res) => {
+    const enId = req.params.id;
+    let enquiry = await enquiryModel.deleteOne({ _id: enId });
+    res.send({ status: 1, msg: "Enquiry Deleted Successfully", enquiry })
+}
+
+module.exports = { enquiryInsert, enquiryList, enquiryDelete };
