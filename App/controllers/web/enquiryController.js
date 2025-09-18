@@ -27,4 +27,20 @@ let enquiryDelete = async (req, res) => {
     res.send({ status: 1, msg: "Enquiry Deleted Successfully", enquiry })
 }
 
-module.exports = { enquiryInsert, enquiryList, enquiryDelete };
+let enquirySingleRow = async (req, res) => {
+    const enId = req.params.id;
+    let enquiry = await enquiryModel.findOne({ _id: enId });
+    res.send({ status: 1, enquiry })
+}
+
+let enquiryUpdate = async (req, res) => {
+    const enId = req.params.id;
+    let { name, email, phone, message } = req.body;
+    let updatedObject = {
+        name, email, phone, message
+    };
+    let enquiry = await enquiryModel.updateOne({ _id: enId },updatedObject);
+    res.send({ status: 1, msg: "Enquiry Updated Successfully", enquiry })
+}
+
+module.exports = { enquiryInsert, enquiryList, enquiryDelete,enquirySingleRow,enquiryUpdate };
